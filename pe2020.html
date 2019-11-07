@@ -1,0 +1,211 @@
+<html lang="ES">
+	<head>
+		<meta charset="UTF-8">
+		<title>REGISTRO ONLINE :: PERÚ ENERGÍA 2019</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+				font-family: 'Roboto', sans-serif;
+			}
+			.error{
+				color: red;
+			}
+		</style>
+		<div class="container">
+			<h1 class="text-center">Perú Energía Sur 2020</h1>
+			<h2 class="text-center">Ficha de Inscripción electrónica</h2>
+			<div id="error"></div>
+			<br>
+			<form id="registro_web" name="registro_web" method="POST" novalidate="novalidate">
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-heading">Datos del Participante</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Nombres *</label>
+										<input type="text" name="nombres" id="nombres" class="form-control" required="">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Apellidos *</label>
+										<input type="text" name="apellidos" id="apellidos" class="form-control" required="">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>Tipo de Documento *</label>
+										<select name="tipo_documento" id="tipo_documento" class="form-control" required="">
+											<option selected="" hidden="" value="">Seleccione...</option>
+											<option value="DNI">DNI</option>
+											<option value="C.E.">C.E.</option>
+											<option value="PASAPORTE">PASAPORTE</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>Num. Documento</label>
+										<input type="number" name="num_documento" id="num_documento" class="form-control" required="">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Teléfono *</label>
+										<input type="phone" name="telefono" id="telefono" class="form-control" required="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Correo electrónico *</label>
+										<input type="email" name="email" id="email" class="form-control" required="">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Cargo *</label>
+										<input type="text" name="cargo" id="cargo" class="form-control" required="">
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="form-group">
+										<label>Empresa</label>
+										<input type="text" name="empresa" id="empresa" class="form-control">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-heading">Datos de la Empresa</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>RUC / RUT</label>
+										<input type="number" id="ruc_empresa" name="ruc_empresa" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="form-group">
+										<label>Razón Social</label>
+										<input type="text" name="razon_social" id="razon_social" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Dirección Fiscal</label>
+										<input type="text" name="direccion_fiscal" id="direccion_fiscal" class="form-control">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-heading">Datos del Pago</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Tipo de Comprobante *</label>
+										<select name="tipo_comprobante" id="tipo_comprobante" class="form-control" required="">
+											<option selected="" hidden="" value="">Seleccione...</option>
+											<option value="BOLETA">BOLETA</option>
+											<option value="FACTURA">FACTURA</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Facturación con Orden de Servicio? *</label>
+										<select name="orden_servicio" id="orden_servicio" class="form-control" required="">
+											<option selected="" hidden="" value="">Seleccione...</option>
+											<option value="SI">SI</option>
+											<option value="NO">NO</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Forma de Pago *</label>
+										<select name="idforma_pago" id="idforma_pago" class="form-control" required="">
+											<option selected="" hidden="" value="">Seleccione...</option>
+											<option value="1">TRANSFERENCIA BANCARIA</option>
+											<option value="2">DEPÓSITO</option>
+											<option value="3">TARJETA DE CRÉDITO / DÉBITO</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Contacto Facturación *</label>
+										<input type="text" name="contacto_facturacion" id="contacto_facturacion" class="form-control" required="">
+									</div>
+								</div>	
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>E-mail del Contacto * </label>
+										<input type="email" name="email_contacto" id="email_contacto" class="form-control" required="">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Telf. del Contacto *</label>
+										<input type="phone" name="telf_contacto" id="telf_contacto" class="form-control" required="">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<label>Evento a participar * </label>
+									<select name="idevento" id="idevento" class="form-control valid" aria-invalid="false">
+										<option selected="" hidden="" value="">Seleccione...</option>
+										<option value="24">PERÚ ENERGÍA 2019 (02 DÍAS) - USD 700 + IGV</option>
+										<option value="25">PERÚ ENERGÍA 2019 (01 DÍA) - USD 450 + IGV</option>
+										<option value="26">PERÚ ENERGÍA 2019 (Universitario) - USD 150 + IGV</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Datos bancarios</div>
+						<div class="panel-body">
+							<p>Banco de Crédito del Perú</p>
+							<p>CTA CTE USD: 194-2137754-1-83 Código CCI 00219400213775418390</p>
+							<p>CTA CTE S/.: 194-2141671-0-39 Código CCI: 00219400214167103996</p>
+							<p>Banco de la Nación (Operación sujeta a detracción del 12%): N° Detracción: 00068072069</p>
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-block btn-primary btn-lg" type="submit" id="btn-submit">ENVIAR REGISTRO</button>
+				<button class="btn btn-block btn-default btn-lg" type="reset">LIMPIAR CAMPOS</button>
+			</form>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

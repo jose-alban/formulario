@@ -1,0 +1,126 @@
+FORMAT: 1A
+HOST: https://dumbo.miguelvega.pe/api/
+
+# Integración mediante API Forms
+[ DUMBO Workflow ] Nuestra API está diseñada para permitir almacenar el registro de cualquier
+participante utilizando sus propias plataformas.
+
+## Estructura de la API
+Los conceptos básicos son simples.
+Los desarrolladores realizan un POST con la información requerida a la URL destino
+usando el formato JSON y obtienen respuestas estructuradas en formato JSON.
+
+Los desarrolladores son libres de usar el lenguaje de programación que ellos deseen.
+Nota: No olvidar agregar en el header `Content-Type: application/json` a sus requests!
+
+## Forma de Pago
+Para poder trabajar con la API, los desarrolladores deberán especificar la forma de pago
+mediante el ID
+
+| Clave      | Valor           |
+|:--------------|:--------------|
+| 1 | `Transferencia bancaria` |
+| 2 | `Depósito en cuenta` |
+| 3 | `Tarjeta de crédito o débito` |
+| 5 | `Efectivo` |
+
+
+## Eventos
+Para poder trabajar con la API, los desarrolladores deberán especificar el evento mediante l ID
+
+| Clave      | Valor           |
+|:--------------|:--------------|
+| 11 | `ELECTROTRANSPORTE - Conferencia 2 DÍAS / USD 260.00` |
+| 12 | `ELECTROTRANSPORTE - Estudiante pregrado / USD 80.00` |
+| 13 | `SEMINARIO HIDROCARBUROS - S/. 520.00 + IGV` |
+| 14 | `RELACIONES COMUNITARIAS - S/. 420 Inc. IGV` |
+| 15 | `PERÚ ENERGÍA SUR - USD 180 + IGV` |
+| 16 | `PERÚ ENERGÍA SUR - USD 50 + IGV (Universitario)` |
+| 17 | `PERÚ ENERGÍA 2019 (02 DÍAS) - USD 700 + IGV` |
+| 18 | `PERÚ ENERGÍA 2019 (01 DÍA) - USD 450 + IGV` | 
+| 19 | `PERÚ ENERGÍA 2019 (Universitario) - USD 150 + IGV` | 
+
+## **Estructura request**
+#### **Cabecera**
+
+| Clave         | Valor                 | Descripción
+|:--------------|:----------------------|:------------------------------------------
+| Content-Type  | `application/json`    | Forma en la que se envían los datos
+
+
+#### **Parámetros**
+| Clave          | Valor        | Descripción
+|:-------------- |:-------------|:------------------------------------------
+| nombres    | `Miguel`      | Nombres del participante
+| apellidos | `Vega`    | Apellidos del participante
+| tipo_documento | `DNI`    | Tipo de documento del participante (DNI / CE / PASAPORTE)
+| num_documento | `12345678`    | Número de documento del participante
+| telefono | `987654321`    | Número celular del participante
+| email | `mvegaplm@gmail.com`    | Correo electrónico del participante
+| cargo | `Software Engineer`    | Cargo del participante
+| empresa | `Circuit`    | Empresa donde labora el participante
+| tipo_comprobante | `BOLETA`    | Tipo de comprobante para facturación (BOLETA / FACTURA)
+| orden_servicio | `SI`    | Condicional si el participante requerirá orden de servicio (SI / NO)
+| ruc_empresa | `10987456123`    | RUC de la empresa a emitir la factura
+| razon_social | `EMPRESA Corporativa S.A.C.`    | Razón Social de la empresa
+| direccion_fiscal | `Av. José Pardo 223, Miraflores, Lima`    | Dirección fiscal de la empresa
+| contacto_facturacion | `Janis Roberts`    | Contacto del área de facturación (Nombres / Apellidos)
+| email_contacto | `janisr1@gmail.com`    | Correo electrónico del contacto de facturación
+| telf_contacto | `987321654`    | Teléfono de contacto de facturación
+| idforma_pago | `1`    | Clave de la forma de pago a utilizar
+| idevento | `14`    | Clave del evento a inscribir
+
+#### **Ejemplos de Respuestas**
+
+| Código     | Mensaje                
+|:---------- |:--------------         
+| 200        | `Mensaje de respuesta de la operación`
+| 201        | `Participante registrado satisfactoriamente`
+| 404        | `Ocurrió un error al intentar registrar al participante`
+| 405        | `Method not allowed`
+| 409        | `El participante ya se encuentra registrado en el evento`
+
+
+
+## Participante [/participant]
+### Registrar nuevo participante [POST]
+
+Permitirá registrar un nuevo participante desde cualquier plataforma o formulario
+
++ Request (application/json)
+
+        {
+            "nombres": "Richard",
+            "apellidos": "Hendricks",
+            "tipo_documento":"DNI",
+            "num_documento":"12345678",
+            "telefono":"987654321",
+            "email":"rhendricks@piedpiper.com",
+            "cargo":"CEO",
+            "empresa":"Pied Piper",
+            "tipo_comprobante":"BOLETA",
+            "orden_servicio":"NO",
+            "ruc_empresa":"10123456789",
+            "razon_social":"Pied Piper Ltd",
+            "direccion_fiscal":"Palo Alto, CA",
+            "contacto_facturacion":"Jared P.",
+            "email_contacto":"rhendricks@piedpiper.com",
+            "telf_contacto":"987321654",
+            "idforma_pago":1,
+            "idevento":14
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /participant
+
+    + Body
+
+            {
+                "code": 201,
+                "message": "Participante registrado satisfactoriamente"
+            }
+
+        
